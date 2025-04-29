@@ -12,7 +12,7 @@ function findNumber(arrA, arrB, wanted) {
         if (arrA[arrAIndex] == wanted) {
 
             while (arrB.length > arrBIndex) {
-                if (arrB[arrIndex] == wanted) {
+                if (arrB[arrBIndex] == wanted) {
                     targetValues.push(arrB[arrBIndex])
                     return targetValues
                 } else if (arrBIndex == arrB.length - 1) {

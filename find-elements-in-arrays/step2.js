@@ -25,11 +25,11 @@ function findNumber(arrA, arrB, rng, wanted) {
         oddOrEven = arrA[arrAIndex] % 2 == 0 ? 'even' : 'odd' 
 
         if (withinRange && oddOrEven == wanted) {
-
             
+            console.log(withinRange, oddOrEven, wanted);
 
             while (arrB.length > arrBIndex) {
-                if (arrB[arrIndex] == wanted) {
+                if (arrB[arrBIndex] == wanted) {
                     targetValues.push(arrB[arrBIndex])
                     return targetValues
                 } else if (arrBIndex == arrB.length - 1) {
@@ -48,4 +48,4 @@ function findNumber(arrA, arrB, rng, wanted) {
         // return array
 }
 
-// console.log(findNumber([2,4,567,6,5], [12,234,435,34,4], 4));
+console.log(findNumber([2,4,567,7,5], [12,7,435,3,4], [2,7], 'even'));
