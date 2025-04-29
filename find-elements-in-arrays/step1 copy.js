@@ -2,14 +2,29 @@
 
 // input: 2 arrays of numbers
 // output: single array with a number
+// COMPLETED
 
-function findNumber(arrA, arrB, wanted) {
+// updates
+// check whether number is odd or even then check for match for wanted
+// check if number is within a given range
+// wanted will now equal a string that will equal either odd or even
+// rng will be an added param: rng will be an array of 2 numbers
+
+function findNumber(arrA, arrB, rng, wanted) {
     let targetValues = []
     let arrAIndex = 0 
     let arrBIndex = 0
 
+    let withinRange = null
+    let oddOrEven = null
+
+
     while (arrA.length > arrAIndex) {
-        if (arrA[arrAIndex] == wanted) {
+
+        withinRange = arrA[arrAIndex] >= rng[0] && arrA[arrAIndex] <= rng[1] ? true : false 
+        oddOrEven = arrA[arrAIndex] % 2 == 0 ? 'even' : 'odd' 
+
+        if (withinRange && oddOrEven == wanted) {
 
             
 
@@ -33,4 +48,4 @@ function findNumber(arrA, arrB, wanted) {
         // return array
 }
 
-console.log(findNumber([2,4,567,6,5], [12,234,435,34,4], 4));
+// console.log(findNumber([2,4,567,6,5], [12,234,435,34,4], 4));
