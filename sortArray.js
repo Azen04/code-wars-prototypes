@@ -4,34 +4,34 @@
 // output: sorted array of numbers from least to greates
 
 
-const arrC = [42, 7, 13, 89, 7, 3, 56, 21, 42, 10, 5, 89, 3];
+const newArr = [42, 7, 13, 89, 7, 3, 56, 21, 42, 10, 5, 89, 3];
 // declare array of unsorted integers 
 let position = 0// declare let variable with value 0
 let FullIterationsCounter = 0// declare let variable with value 0
 let IterationIndex = 0// declare let variable with value 0
 let occurances = 0
-let lowestNumber = arrC[position]// declare let variable with value of type 'number
+let lowestNumber = newArr[position]// declare let variable with value of type 'number
 
-while (position < arrC.length) {
-    lowestNumber = arrC[position]
+while (position < newArr.length) {
+    lowestNumber = newArr[position]
 
-    while (IterationIndex < arrC.length) {
+    while (IterationIndex < newArr.length) {
 
-        if (arrC[IterationIndex] < arrC[position]) {
-            lowestNumber = lowestNumber > arrC[IterationIndex] ? arrC[IterationIndex] : lowestNumber
+        if (newArr[IterationIndex] < newArr[position]) {
+            lowestNumber = lowestNumber > newArr[IterationIndex] ? newArr[IterationIndex] : lowestNumber
         }
 
         IterationIndex++
     }
 
-    arrC[position] = arrC.splice(arrC.indexOf(lowestNumber), 1, arrC[position])
+    newArr[position] = newArr.splice(newArr.indexOf(lowestNumber), 1, newArr[position])
 
     IterationIndex = ++FullIterationsCounter
     position++
 
 }
 
-console.log(arrC.flat());
+console.log(newArr.flat());
 
 
 // check for multiple occurances of a specific value
@@ -92,7 +92,7 @@ while (lookFor < arrA.length) {
 
         if (occursMoreThanOnce) {
 
-            arrC.push(arrA[lookFor])
+            newArr.push(arrA[lookFor])
         }
 
         timesOcurred = 0
@@ -142,7 +142,7 @@ while (lookFor < arrA.length) {
 
         if (occursMoreThanOnce) {
 
-            arrC.push(arrB[lookFor])
+            newArr.push(arrB[lookFor])
         }
 
     }
@@ -154,5 +154,5 @@ while (lookFor < arrA.length) {
 
 }
 
-arrC
+newArr
 

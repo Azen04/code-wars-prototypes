@@ -18,9 +18,16 @@
 // if found, push value to new array
 // COMPLETED
 
+// updates 3
+// reset offsetIndexA && offsetIndexB after increases
+// test for scalability and error handling 
+// COMPLETED
+
 
 function findNumber(arrA, arrB, rng, wanted) {
-    let targetValues = []
+    const newArr = []
+    let newArrLength = newArr.length
+
     let arrAIndex = 0
     let arrBIndex = 0
 
@@ -30,6 +37,12 @@ function findNumber(arrA, arrB, rng, wanted) {
     let offsetIndexA = 1
     let offsetIndexB = 1
 
+    let newArrIndex1 = 0
+    let newArrIndex2 = 0
+
+    let FullIterationsCounter = 0
+    let lowestNumber = newArr[newArrIndex1] 
+
     while (arrA.length > arrAIndex) {
 
         withinRange = arrA[arrAIndex] >= rng[0] && arrA[arrAIndex] <= rng[1] ? true : false
@@ -37,39 +50,64 @@ function findNumber(arrA, arrB, rng, wanted) {
 
         if (withinRange && oddOrEven == wanted) {
 
-            console.log(arrA[arrAIndex]);
-
             while (arrB.length > arrBIndex) {
-                console.log(arrB[arrBIndex]);
 
                 if (arrB[arrBIndex] == arrA[arrAIndex]) {
-                console.log(arrA.length, arrAIndex + offsetIndexA)
                     while (arrA.length > arrAIndex + offsetIndexA) {
-                        console.log(arrB[arrBIndex]);
- 
+
                         if (arrA[arrAIndex] == arrA[arrAIndex + offsetIndexA]) {
                             while (arrB.length > arrBIndex + offsetIndexB) {
 
                                 if (arrB[arrBIndex] == arrB[arrBIndex + offsetIndexB]) {
-                                    targetValues.push(arrB[arrBIndex])
+                                    newArr.push(arrB[arrBIndex])
+                                    break
                                 }
+
                                 offsetIndexB++
                             }
+                        }
+
+                        if (newArrLength != newArr.length) {
+                            break
                         }
 
                         offsetIndexA++
                     }
 
-                } else if (arrAIndex == arrB.length - 1) {
-                    return targetValues
+                    offsetIndexA = 1
+                    offsetIndexB = 1
+
+                }
+                if (newArrLength != newArr.length) {
+                    newArrLength = newArr.length
+                    break
                 }
                 arrBIndex++
             }
+            arrBIndex = 0
         }
         arrAIndex++
     }
 
-    return targetValues
+    while (newArrIndex1 < newArr.length) {
+    lowestNumber = newArr[newArrIndex1]
+
+    while (newArrIndex2 < newArr.length) {
+
+        if (newArr[newArrIndex2] < newArr[newArrIndex1]) {
+            lowestNumber = lowestNumber > newArr[newArrIndex2] ? newArr[newArrIndex2] : lowestNumber
+        }
+
+        newArrIndex2++
+    }
+
+    newArr[newArrIndex1] = newArr.splice(newArr.indexOf(lowestNumber), 1, newArr[newArrIndex1])
+
+    newArrIndex2 = ++FullIterationsCounter
+    newArrIndex1++
+
+}
+    return Array.from(new Set(newArr.flat()))
 
     // loop through both array
     // check if selected value is wanted value
@@ -78,4 +116,4 @@ function findNumber(arrA, arrB, rng, wanted) {
     // return array
 }
 
-console.log(findNumber([2, 4, 7, 7, 5], [12, 7, 435, 7, 4], [2, 7], 'odd'));
+console.log(findNumber([3, 12, 6, 10, 9, 4, 20, 2, 7, 3, 14, 6, 8, 10, 2, 5, 18, 4, 3], [8, 7, 4, 15, 10, 3, 25, 6, 7, 1, 12, 4, 19, 5, 2, 10, 3, 6, 14], [2, 999], 'even'));
