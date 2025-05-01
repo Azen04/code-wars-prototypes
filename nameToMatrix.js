@@ -1,41 +1,55 @@
 // given a string, create a grid that holds the string
+// rows and columns within the grid must be equal in length
+// provided string must continue on the next array if their is not enough space in it's current array
+// loops through string will equal array length  
+// whenever all values within the string are pushed then push '.' for the remaining indexes
 
 // input: string
 // output: grid of arrays 
 
-function toMatrix(name) {
+const matrixfy = str => {
 
     const matrix = []
-    let amount = 2
-    let modifier = 2
-    let nameIndex = 0
 
-    while (name.length > amount) {
+    let square = 0 
 
-        amount *= modifier
+    let baseNumber = 0
+    let exponent = 2
 
-        modifier++
-        amount++
+    let strIndex = 0
+    let lettersPushed = 0
+
+    if (str.length == 0) {
+      return 'name must be at least one letter'
     }
 
-    while (matrix.length < amount) {
+    while (str.length > square) {
+        baseNumber++
+
+        square = baseNumber ** exponent
+
+    }
+
+    while (matrix.length < baseNumber) {
         matrix.push([])
 
-        while (matrix[matrix.length - 1].length < amount) {
+        while (matrix[matrix.length - 1].length < baseNumber) {
 
-            if (name.length - 1 != nameIndex) {
-                matrix[matrix.length - 1].push(name[nameIndex])
+            if (str.length != lettersPushed) {
+                matrix[matrix.length - 1].push(str[strIndex])
+                lettersPushed++
             } else {
                 matrix[matrix.length - 1].push('.')
             }
 
-            nameIndex++
-            // store index before loop ends
-            // resume push of name letters when in next array
-
+            strIndex++
         }
     }
+    return matrix
 }
+
+console.log(matrixfy('a'));
+
 
 
 
