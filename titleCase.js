@@ -16,17 +16,18 @@
 
 function titleCase(title, minorWords) {
 
+    let wordLetters = []
+
     let wordIndex = 0
     let letterIndex = 0
     let minorWordIndex = 0
 
+    let titleCasedWord = null
+
     let isMinorWord = false
 
     const wordsArray = title.split(' ')
-    const minorWordsArray = minorWords.split(' ')
-
-    wordsArray
-    minorWordsArray
+    const minorWordsArray = minorWords ? minorWords.split(' ') : false
 
     while (wordsArray.length > wordIndex) {
         while (wordsArray[wordIndex].length > letterIndex) {
@@ -34,13 +35,15 @@ function titleCase(title, minorWords) {
             if (wordIndex > 0) {
                 while (minorWordsArray.length > minorWordIndex) {
 
-                    if (minorWordsArray[minorWordIndex] == wordsArray[wordIndex]) {
+                    if (minorWordsArray[minorWordIndex].toLowerCase() == wordsArray[wordIndex].toLowerCase()) {
+                        wordsArray[wordIndex] = wordsArray[wordIndex].toLowerCase()
                         isMinorWord = true
                         break
                     }
 
                     minorWordIndex++
                 }
+                minorWordIndex = 0
             }
 
             if (isMinorWord) {
@@ -48,16 +51,20 @@ function titleCase(title, minorWords) {
                 break
             }
 
-            // select word then make first  letter uppercase 
-            // select other letters and make lowercase
-
             if (letterIndex == 0) {
-                wordsArray[wordIndex][letterIndex] = wordsArray[wordIndex][letterIndex].toUpperCase()
-                console.log(wordsArray[wordIndex][letterIndex] = wordsArray[wordIndex][letterIndex].toUpperCase());
-                console.log(wordsArray[wordIndex]);
-
+                wordLetters = wordsArray[wordIndex].split('')
+                wordLetters[letterIndex] = wordLetters[letterIndex].toUpperCase()
+                titleCasedWord = wordLetters.join('')
+                wordsArray[wordIndex] = titleCasedWord
+                wordLetters
+                titleCasedWord
             } else {
-                wordsArray[wordIndex][letterIndex] = wordsArray[wordIndex][letterIndex].toLowerCase()
+                wordLetters = wordsArray[wordIndex].split('')
+                wordLetters[letterIndex] = wordLetters[letterIndex].toLowerCase()
+                titleCasedWord = wordLetters.join('')
+                wordsArray[wordIndex] = titleCasedWord
+                wordLetters
+                titleCasedWord
             }
 
             letterIndex++
@@ -67,8 +74,8 @@ function titleCase(title, minorWords) {
         wordIndex++
     }
 
-    return wordsArray
+    return wordsArray.join(' ')
 }
 
-console.log(titleCase('how are you today', 'are you'));
+console.log(titleCase('how are you today', 'ARE YOU'));
 
