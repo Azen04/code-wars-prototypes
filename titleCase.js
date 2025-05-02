@@ -18,6 +18,9 @@ function titleCase(title, minorWords) {
 
     let wordIndex = 0
     let letterIndex = 0
+    let minorWordIndex = 0
+
+    let isMinorWord = false
 
     const wordsArray = title.split(' ')
     const minorWordsArray = minorWords.split(' ')
@@ -28,13 +31,44 @@ function titleCase(title, minorWords) {
     while (wordsArray.length > wordIndex) {
         while (wordsArray[wordIndex].length > letterIndex) {
 
-            
-            
+            if (wordIndex > 0) {
+                while (minorWordsArray.length > minorWordIndex) {
+
+                    if (minorWordsArray[minorWordIndex] == wordsArray[wordIndex]) {
+                        isMinorWord = true
+                        break
+                    }
+
+                    minorWordIndex++
+                }
+            }
+
+            if (isMinorWord) {
+                isMinorWord = false
+                break
+            }
+
+            // select word then make first  letter uppercase 
+            // select other letters and make lowercase
+
+            if (letterIndex == 0) {
+                wordsArray[wordIndex][letterIndex] = wordsArray[wordIndex][letterIndex].toUpperCase()
+                console.log(wordsArray[wordIndex][letterIndex] = wordsArray[wordIndex][letterIndex].toUpperCase());
+                console.log(wordsArray[wordIndex]);
+
+            } else {
+                wordsArray[wordIndex][letterIndex] = wordsArray[wordIndex][letterIndex].toLowerCase()
+            }
+
             letterIndex++
         }
-        
+
         letterIndex = 0
         wordIndex++
     }
-    
+
+    return wordsArray
 }
+
+console.log(titleCase('how are you today', 'are you'));
+
