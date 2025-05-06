@@ -5,17 +5,26 @@
 // check for traling zeros on each value
 // check if octect on each value
 
+// updates
+// if trailing zero is found: return false
+// check for non integers
+
+
+
+
 function isValidIP(str) {
     if (str.length < 7) {
         return false
     }
 
+    console.log(str);
+
     let index = 0
     let zeroFinderIndex = 0
 
-    let trailingZerosCount = 0
-
     let convertedNumber = ''
+
+    let octectCount
 
     const ipNumbers = str.split('.')
     let numberDigits = []
@@ -23,27 +32,31 @@ function isValidIP(str) {
     while (index < ipNumbers.length) {
         numberDigits = ipNumbers[index].split('')
 
-        while (zeroFinderIndex < numberDigits.length && numberDigits[zeroFinderIndex] == 0) {
-            numberDigits[zeroFinderIndex] == 0 ? trailingZerosCount++ : trailingZerosCount
-            zeroFinderIndex++
-        }
+        if (numberDigits[0] == 0 && numberDigits.length == 1 || numberDigits[0] != 0) {
+            while (zeroFinderIndex < numberDigits.length) {
 
-        trailingZerosCount > 0 ? numberDigits.splice(0, trailingZerosCount) : trailingZerosCount
+                if (isNaN(numberDigits[zeroFinderIndex])) {
+                    return false
+                }
+
+                zeroFinderIndex++
+            }
+
+        } else { return false }
 
         convertedNumber = numberDigits.join('') * 1
 
         if (convertedNumber >= 0 && convertedNumber <= 255) {
-            ipNumbers[index] = convertedNumber
+            octectCount++
         } else { return false }
 
         ipNumbers
 
         zeroFinderIndex = 0
-        trailingZerosCount = 0
         index++
     }
 
-    return true
+    return octectCount == 4 ? true : false
 }
 
-isValidIP('001.02.03.04')
+isValidIP('0.0.0.0')
