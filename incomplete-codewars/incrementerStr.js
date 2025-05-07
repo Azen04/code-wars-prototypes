@@ -8,3 +8,10 @@
 // immediate checks
 // start from end of string for number
 
+function incrementStr(str) {
+    let newString = str[str.length - 1] * 1 != NaN ? str + 1 : str
+
+    return newString
+}
+
+// console.log(incrementStr('foo'));
