@@ -3,15 +3,44 @@
 // start from end of array
 // COMPLETED
 
-function startFromEnd(array) {
-    let index = array.length - 1
+// updates
+// iterate from end until selected number is not a number
+// iterated numbers will be pushed to an array
+// once all numbers are pushed
+// store array length  
+// COMPLETED
+
+// updates 2
+// reverse array
+// join array
+// multiply by 1
+// add 1
+
+// updates 3
+// convert to string and check if length changes 
+// delete zero
+
+function startFromEnd(str) {
+    let index = str.length - 1
+
+    let numberLength = 0
+
+    const arrayConvertedStr = str.split('')
+    const numbers = []
 
     while (index > -1) {
-        console.log(array[index]);
-
+        console.log(str[index]);
+        if (!isNaN(str[index])) {
+            numbers.push(str[index])
+        } else {
+            break
+        }
         index--
     }
+    numberLength = numbers.length
+    console.log(numbers, numberLength);
+
 }
 
-startFromEnd([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+startFromEnd('fooooo98172983791287')
 
