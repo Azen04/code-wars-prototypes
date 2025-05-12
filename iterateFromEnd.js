@@ -22,11 +22,12 @@
 
 function startFromEnd(str) {
     let index = str.length - 1
-
     let numberLength = 0
 
     const arrayConvertedStr = str.split('')
     const numbers = []
+
+    let postConversionNumber = null
 
     while (index > -1) {
         console.log(str[index]);
@@ -38,9 +39,13 @@ function startFromEnd(str) {
         index--
     }
     numberLength = numbers.length
-    console.log(numbers, numberLength);
+
+    numbers.reverse()
+
+    postConversionNumber = numbers.join() * 1 + 1
+    console.log(postConversionNumber);
 
 }
 
-startFromEnd('fooooo98172983791287')
+startFromEnd('fooooo9')
 
