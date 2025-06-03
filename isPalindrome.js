@@ -24,4 +24,4 @@ function isPalindrome(string) {
 
 
 console.log(isPalindrome('shark'));
-// console.log(isPalindrome('racecar'));
+console.log(isPalindrome('racecar'));
