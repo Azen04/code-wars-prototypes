@@ -18,7 +18,6 @@
 
 // updates 3
 // convert to string and check if length changes 
-// delete zero
 
 function startFromEnd(str) {
     let index = str.length - 1
@@ -43,7 +42,12 @@ function startFromEnd(str) {
     numbers.reverse()
 
     postConversionNumber = numbers.join() * 1 + 1
-    console.log(postConversionNumber);
+
+    // if (postConversionNumber.toString().length != numbers.length) {
+    // arrayConvertedStr[]
+    // }
+    console.dir(document);
+
 
 }
 

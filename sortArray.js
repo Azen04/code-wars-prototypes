@@ -4,31 +4,31 @@
 // input: unsorted array of numbers
 // output: sorted array of numbers from least to greates
 
-const newArr = [42, 7, 13, 89, 7, 3, 56, 21, 42, 10, 5, 89, 3];
+const pokemonCardsArray = [42, 7, 13, 89, 7, 3, 56, 21, 42, 10, 5, 89, 3];
 
 let position = 0
 let IterationIndex = 0
 
 let FullIterationsCounter = 0
-let lowestNumber = newArr[position]
+let lowestNumber = pokemonIds[position]
 
-while (position < newArr.length) {
-    lowestNumber = newArr[position]
+while (position < pokemonIds.length) {
+    lowestNumber = pokemonIds[position]
 
-    while (IterationIndex < newArr.length) {
+    while (IterationIndex < pokemonIds.length) {
 
-        if (newArr[IterationIndex] < newArr[position]) {
-            lowestNumber = lowestNumber > newArr[IterationIndex] ? newArr[IterationIndex] : lowestNumber
+        if (pokemonIds[IterationIndex] < pokemonIds[position]) {
+            lowestNumber = lowestNumber > pokemonIds[IterationIndex] ? pokemonIds[IterationIndex] : lowestNumber
         }
 
         IterationIndex++
     }
 
-    newArr[position] = newArr.splice(newArr.indexOf(lowestNumber), 1, newArr[position])
+    pokemonIds[position] = pokemonIds.splice(pokemonIds.indexOf(lowestNumber), 1, pokemonIds[position])
 
     IterationIndex = ++FullIterationsCounter
     position++
 
 }
 
-console.log(newArr.flat());
+console.log(pokemonIds.flat());

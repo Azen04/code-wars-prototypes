@@ -11,7 +11,9 @@
 function incrementStr(str) {
     let newString = str[str.length - 1] * 1 != NaN ? str + 1 : str
 
+    let index = 1
+
     return newString
 }
 
-// console.log(incrementStr('foo'));
+// 
