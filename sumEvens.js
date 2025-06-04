@@ -13,7 +13,7 @@ function getSum(array) {
 
     // const sums = {
     //     evens: null,
-    //     odds: null
+    //     odds: 
     // }
 
 
