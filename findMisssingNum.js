@@ -1,6 +1,8 @@
 // given an array of numbers
 // find missing number
 
+// solved
+
 function getMissingNumber(array) {
 
     for (const value of array) {
