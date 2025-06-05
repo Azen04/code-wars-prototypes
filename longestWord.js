@@ -3,6 +3,10 @@
 
 // getLongestWord
 
+// SOLVED
+// POST SOLUTION NOTES
+// REFACTOR & IMPLEMENT REGEX SOLUTION
+
 function getLongestWord(string) {
     const words = string.split(' ')
     let longestWord = ''
