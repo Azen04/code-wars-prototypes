@@ -3,6 +3,9 @@
 
 // ON HOLD
 // NOTE: 
+// solved
+// POST SOLUTION NOTE: should be refactored
+
 
 function getHighestProduct(array) {
     let product = 1
@@ -10,7 +13,7 @@ function getHighestProduct(array) {
     let highestUniqueNumber = 0
     let valueIndex = 0
 
-    for (let index = 0; index < array.length; index++) {
+    for (let index = (0 - count); index < array.length; index++) {
         const first = array[index];
 
         if (count == 2) {
@@ -32,21 +35,22 @@ function getHighestProduct(array) {
 
             console.log('after splice', array.length);
 
-            highestUniqueNumber = first < second
-                && highestUniqueNumber < second
-                ? second : highestUniqueNumber
+            if (first < second && highestUniqueNumber < second) {
+                valueIndex = index2
+                highestUniqueNumber = second
+            }
 
         }
-
-        // highestUniqueNumber should be different every time
+        array.splice(valueIndex, 1)
         product *= highestUniqueNumber
+        highestUniqueNumber = 0
         count++
     }
 
     return product
 }
 
-const randomArray = [3, 7, 12, 7, 12, 8, 0, 2, 6, 9];
+const randomArray = [3, 7, 12, 7, 12, 6, 0, 2, 8, 9];
 
 console.log(getHighestProduct(randomArray));
 
